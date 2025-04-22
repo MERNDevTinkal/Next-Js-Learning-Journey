@@ -115,7 +115,7 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
 });
 
 exports.Prisma.SnippetScalarFieldEnum = {
-  Id: 'Id',
+  id: 'id',
   title: 'title',
   code: 'code'
 };

@@ -882,27 +882,27 @@ export namespace Prisma {
   }
 
   export type SnippetAvgAggregateOutputType = {
-    Id: number | null
+    id: number | null
   }
 
   export type SnippetSumAggregateOutputType = {
-    Id: number | null
+    id: number | null
   }
 
   export type SnippetMinAggregateOutputType = {
-    Id: number | null
+    id: number | null
     title: string | null
     code: string | null
   }
 
   export type SnippetMaxAggregateOutputType = {
-    Id: number | null
+    id: number | null
     title: string | null
     code: string | null
   }
 
   export type SnippetCountAggregateOutputType = {
-    Id: number
+    id: number
     title: number
     code: number
     _all: number
@@ -910,27 +910,27 @@ export namespace Prisma {
 
 
   export type SnippetAvgAggregateInputType = {
-    Id?: true
+    id?: true
   }
 
   export type SnippetSumAggregateInputType = {
-    Id?: true
+    id?: true
   }
 
   export type SnippetMinAggregateInputType = {
-    Id?: true
+    id?: true
     title?: true
     code?: true
   }
 
   export type SnippetMaxAggregateInputType = {
-    Id?: true
+    id?: true
     title?: true
     code?: true
   }
 
   export type SnippetCountAggregateInputType = {
-    Id?: true
+    id?: true
     title?: true
     code?: true
     _all?: true
@@ -1023,7 +1023,7 @@ export namespace Prisma {
   }
 
   export type SnippetGroupByOutputType = {
-    Id: number
+    id: number
     title: string
     code: string
     _count: SnippetCountAggregateOutputType | null
@@ -1048,36 +1048,36 @@ export namespace Prisma {
 
 
   export type SnippetSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    Id?: boolean
+    id?: boolean
     title?: boolean
     code?: boolean
   }, ExtArgs["result"]["snippet"]>
 
   export type SnippetSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    Id?: boolean
+    id?: boolean
     title?: boolean
     code?: boolean
   }, ExtArgs["result"]["snippet"]>
 
   export type SnippetSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    Id?: boolean
+    id?: boolean
     title?: boolean
     code?: boolean
   }, ExtArgs["result"]["snippet"]>
 
   export type SnippetSelectScalar = {
-    Id?: boolean
+    id?: boolean
     title?: boolean
     code?: boolean
   }
 
-  export type SnippetOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"Id" | "title" | "code", ExtArgs["result"]["snippet"]>
+  export type SnippetOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "code", ExtArgs["result"]["snippet"]>
 
   export type $SnippetPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Snippet"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
-      Id: number
+      id: number
       title: string
       code: string
     }, ExtArgs["result"]["snippet"]>
@@ -1163,8 +1163,8 @@ export namespace Prisma {
      * // Get first 10 Snippets
      * const snippets = await prisma.snippet.findMany({ take: 10 })
      * 
-     * // Only select the `Id`
-     * const snippetWithIdOnly = await prisma.snippet.findMany({ select: { Id: true } })
+     * // Only select the `id`
+     * const snippetWithIdOnly = await prisma.snippet.findMany({ select: { id: true } })
      * 
      */
     findMany<T extends SnippetFindManyArgs>(args?: SelectSubset<T, SnippetFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SnippetPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -1208,9 +1208,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Create many Snippets and only return the `Id`
+     * // Create many Snippets and only return the `id`
      * const snippetWithIdOnly = await prisma.snippet.createManyAndReturn({
-     *   select: { Id: true },
+     *   select: { id: true },
      *   data: [
      *     // ... provide data here
      *   ]
@@ -1299,9 +1299,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more Snippets and only return the `Id`
+     * // Update zero or more Snippets and only return the `id`
      * const snippetWithIdOnly = await prisma.snippet.updateManyAndReturn({
-     *   select: { Id: true },
+     *   select: { id: true },
      *   where: {
      *     // ... provide filter here
      *   },
@@ -1503,7 +1503,7 @@ export namespace Prisma {
    * Fields of the Snippet model
    */
   interface SnippetFieldRefs {
-    readonly Id: FieldRef<"Snippet", 'Int'>
+    readonly id: FieldRef<"Snippet", 'Int'>
     readonly title: FieldRef<"Snippet", 'String'>
     readonly code: FieldRef<"Snippet", 'String'>
   }
@@ -1882,7 +1882,7 @@ export namespace Prisma {
 
 
   export const SnippetScalarFieldEnum: {
-    Id: 'Id',
+    id: 'id',
     title: 'title',
     code: 'code'
   };
@@ -1931,28 +1931,28 @@ export namespace Prisma {
     AND?: SnippetWhereInput | SnippetWhereInput[]
     OR?: SnippetWhereInput[]
     NOT?: SnippetWhereInput | SnippetWhereInput[]
-    Id?: IntFilter<"Snippet"> | number
+    id?: IntFilter<"Snippet"> | number
     title?: StringFilter<"Snippet"> | string
     code?: StringFilter<"Snippet"> | string
   }
 
   export type SnippetOrderByWithRelationInput = {
-    Id?: SortOrder
+    id?: SortOrder
     title?: SortOrder
     code?: SortOrder
   }
 
   export type SnippetWhereUniqueInput = Prisma.AtLeast<{
-    Id?: number
+    id?: number
     AND?: SnippetWhereInput | SnippetWhereInput[]
     OR?: SnippetWhereInput[]
     NOT?: SnippetWhereInput | SnippetWhereInput[]
     title?: StringFilter<"Snippet"> | string
     code?: StringFilter<"Snippet"> | string
-  }, "Id">
+  }, "id">
 
   export type SnippetOrderByWithAggregationInput = {
-    Id?: SortOrder
+    id?: SortOrder
     title?: SortOrder
     code?: SortOrder
     _count?: SnippetCountOrderByAggregateInput
@@ -1966,7 +1966,7 @@ export namespace Prisma {
     AND?: SnippetScalarWhereWithAggregatesInput | SnippetScalarWhereWithAggregatesInput[]
     OR?: SnippetScalarWhereWithAggregatesInput[]
     NOT?: SnippetScalarWhereWithAggregatesInput | SnippetScalarWhereWithAggregatesInput[]
-    Id?: IntWithAggregatesFilter<"Snippet"> | number
+    id?: IntWithAggregatesFilter<"Snippet"> | number
     title?: StringWithAggregatesFilter<"Snippet"> | string
     code?: StringWithAggregatesFilter<"Snippet"> | string
   }
@@ -1977,7 +1977,7 @@ export namespace Prisma {
   }
 
   export type SnippetUncheckedCreateInput = {
-    Id?: number
+    id?: number
     title: string
     code: string
   }
@@ -1988,13 +1988,13 @@ export namespace Prisma {
   }
 
   export type SnippetUncheckedUpdateInput = {
-    Id?: IntFieldUpdateOperationsInput | number
+    id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     code?: StringFieldUpdateOperationsInput | string
   }
 
   export type SnippetCreateManyInput = {
-    Id?: number
+    id?: number
     title: string
     code: string
   }
@@ -2005,7 +2005,7 @@ export namespace Prisma {
   }
 
   export type SnippetUncheckedUpdateManyInput = {
-    Id?: IntFieldUpdateOperationsInput | number
+    id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     code?: StringFieldUpdateOperationsInput | string
   }
@@ -2036,29 +2036,29 @@ export namespace Prisma {
   }
 
   export type SnippetCountOrderByAggregateInput = {
-    Id?: SortOrder
+    id?: SortOrder
     title?: SortOrder
     code?: SortOrder
   }
 
   export type SnippetAvgOrderByAggregateInput = {
-    Id?: SortOrder
+    id?: SortOrder
   }
 
   export type SnippetMaxOrderByAggregateInput = {
-    Id?: SortOrder
+    id?: SortOrder
     title?: SortOrder
     code?: SortOrder
   }
 
   export type SnippetMinOrderByAggregateInput = {
-    Id?: SortOrder
+    id?: SortOrder
     title?: SortOrder
     code?: SortOrder
   }
 
   export type SnippetSumOrderByAggregateInput = {
-    Id?: SortOrder
+    id?: SortOrder
   }
 
   export type IntWithAggregatesFilter<$PrismaModel = never> = {
