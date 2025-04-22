@@ -14,3 +14,12 @@ export const editAndSaveSnippet = async(id : number, code:string) =>{
     });
     redirect(`/snippet/${id}`)
 }
+
+export const deleteSnappetsActions = async(id : number)=>{
+    await prisma.snippet.delete({
+        where : {
+            id,
+        },
+    })
+    redirect("/");
+}

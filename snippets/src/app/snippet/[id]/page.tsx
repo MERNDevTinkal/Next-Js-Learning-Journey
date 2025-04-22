@@ -2,6 +2,7 @@ import { prisma } from "@/lib/prisma";
 import React from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import * as actions from "@/actions";
 
 const SnippetDetailPage = async ({ params }: { params: { id: string } }) => {
   const id = parseInt(params.id);
@@ -20,6 +21,8 @@ const SnippetDetailPage = async ({ params }: { params: { id: string } }) => {
     );
   }
 
+  const deleteSnapets = actions.deleteSnappetsActions.bind(null,id);
+
   return (
     <div className="max-w-4xl mx-auto px-4 py-12">
       <div className="bg-white rounded-xl shadow-md border border-gray-200 p-8">
@@ -34,9 +37,11 @@ const SnippetDetailPage = async ({ params }: { params: { id: string } }) => {
             Edit
           </Button>
           </Link>
-          <Button className="bg-red-500 hover:cursor-pointer text-white px-6 py-2 rounded hover:bg-red-600 transition w-full sm:w-auto">
+          <form action={deleteSnapets} >
+          <Button type="submit" className="bg-red-500 hover:cursor-pointer text-white px-6 py-2 rounded hover:bg-red-600 transition w-full sm:w-auto">
             Delete
           </Button>
+          </form>
         </div>
       </div>
 
