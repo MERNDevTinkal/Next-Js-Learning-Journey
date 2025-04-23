@@ -17,7 +17,7 @@ const CreateSnippetPage = () => {
   const snippet = await prisma.snippet.create({
       data : {
         title,
-        code,
+        code, 
       }
     })
     console.log("created snippet",snippet);

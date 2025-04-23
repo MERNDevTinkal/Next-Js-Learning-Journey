@@ -23,3 +23,4 @@ export const deleteSnappetsActions = async(id : number)=>{
     })
     redirect("/");
 }
+
