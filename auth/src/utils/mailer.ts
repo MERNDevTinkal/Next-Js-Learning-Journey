@@ -10,17 +10,18 @@ interface EmailParams {
 
 export const sendEmail = async ({ email, emailType, userId }: EmailParams) => {
   try {
+
     const hashedToken = await bcrypt.hash(userId.toString(), 10);
 
     if (emailType === "verify") {
       await User.findByIdAndUpdate(userId, {
         verifyToken: hashedToken,
-        verifyTokenExpiry: Date.now() + 10 * 60 * 1000, // 10 minutes
+        verifyTokenExpiry: Date.now() + 30 * 60 * 1000,  //30 minutes
       });
     } else if (emailType === "reset") {
       await User.findByIdAndUpdate(userId, {
         forgotPasswordToken: hashedToken,
-        forgotPasswordTokenExpiry: Date.now() + 10 * 60 * 1000, // 10 minutes
+        forgotPasswordTokenExpiry: Date.now() + 30 * 60 * 1000, // 30 minutes
       });
     }
 
@@ -41,7 +42,7 @@ export const sendEmail = async ({ email, emailType, userId }: EmailParams) => {
         emailType === "verify" ? "verify your email" : "reset your password"
       } or copy and paste the link in your browser.
        <br>${process.env.DOMAIN}/verifyemail?token=${hashedToken}
-       <br>Note: This Link is valid for 10 minutes only.
+       <br>Note: This Link is valid for 30 minutes only.
        </p>`,
     };
 
