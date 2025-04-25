@@ -7,26 +7,40 @@ connect();
 export async function POST(request: NextRequest) {
     try {
         const reqBody = await request.json();
-        const {token} = reqBody;
-        console.log(token);
+        const { token } = reqBody;
 
-     const user =   await User.findOneAndUpdate({verifyToken : token ,verifyTokenExpiry : {$gt : Date.now() } })
+        // FIRST find the user to check token validity
+        const user = await User.findOne({
+            verifyToken: token,
+            verifyTokenExpiry: {$gt: Date.now()}
+        });
 
-        if (! user) {
-            return NextResponse.json({message : "Invalied Token"},{status : 400});
-
+        if (!user) {
+            return NextResponse.json(
+                { message: "Invalid or expired token" },
+                { status: 400 }
+            );
         }
 
-        console.log(user);
-        user.isVerified = true;
-        user.verifyToken = undefined;
-        user.verifyTokenExpiry = undefined;
-        await user.save();
-        return NextResponse.json({message : "Email verified successfully", success : true},{status : 200});
-        
-    } catch (error : unknown) {
-        if(error instanceof Error ){
-            return NextResponse.json({message : error.message},{status : 500});
-        }
+        // THEN update the user
+        await User.findByIdAndUpdate(user._id, {
+            $set: {
+                isVerified: true,
+                verifyToken: undefined,
+                verifyTokenExpiry: undefined
+            }
+        });
+
+        return NextResponse.json(
+            { message: "Email verified successfully", success: true },
+            { status: 200 }
+        );
+
+    } catch (error) {
+        console.error("Verification error:", error);
+        return NextResponse.json(
+            { message: "Internal server error" },
+            { status: 500 }
+        );
     }
 }
